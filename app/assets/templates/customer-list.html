@@ -1,0 +1,25 @@
+<div class="container">
+  <div>
+  	<table class="table">
+    <caption>Listado de clientes</caption>
+    <thead>
+      <tr>
+        <td>Nombre</td>
+        <td>Dirección</td>
+        <td>Ciudad</td>
+        <td>Email</td>
+        <td>Teléfono</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="customer in customerCtrl.customers">
+        <td>{{customer.name}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.town}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.phone}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
