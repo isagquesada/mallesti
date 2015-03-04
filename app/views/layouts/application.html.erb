@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<customer-list></customer-list>
+
+<div class="container" ui-view></div>
+  <%= javascript_include_tag 'application' %>
+
 </body>
 </html>
