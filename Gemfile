@@ -18,8 +18,10 @@ gem 'active_model_serializers'
 gem 'rack-cors'
 
 gem 'bootstrap-sass'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
+  gem 'rails-assets-angular-ui-router'
   gem 'angular-rails-templates'
 end
 
