@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails',   '4.2.0'
 
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+
 # Convertir datos mongoDB en objetos de Ruby
 gem 'mongoid', '~> 4.0.1'
 
@@ -13,6 +16,13 @@ gem 'devise',  '~> 3.4.1'
 gem 'active_model_serializers'
 
 gem 'rack-cors'
+
+gem 'bootstrap-sass'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular'
+  gem 'angular-rails-templates'
+end
+
 
 # Estas gemas sólo se usan en el entorno de desarrollo (development)
 group :development do

@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   # Rutas para los recursos relacionados con Task
   resources :tasks, only: [:show, :update, :destroy]
+
+  root to: 'main#main'
 end
