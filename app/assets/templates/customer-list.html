@@ -9,10 +9,12 @@
     </thead>
     <tbody>
       <tr ng-repeat="customer in customerCtrl.customers">
-        <td>{{customer.name}}</td>
+        <td class="nav nav-pills"><a ui-sref="customer({id: customer.id})">{{customer.name}}</a><td>
         <td>{{customer.email}}</td>
-        <td>info<td>
+        <td><a ng-click="customerCtrl.removeCustomer(customer)">Eliminar</a></td>
       </tr>
     </tbody>
   </table>
+  <button type="button" class="btn btn-default">Crear Cliente</button>
+
 </div>
