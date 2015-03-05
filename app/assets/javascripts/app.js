@@ -13,6 +13,15 @@
       controller: "CustomerController",
       controllerAs: "customerCtrl"
     })
+
+    $stateProvider
+    .state("customer", {
+      url: "/customers/:id",
+      templateUrl: "customer-id.html",
+      controller: "CustomerIdController",
+      controllerAs: "customeridCtrl"
+    })
+
 });
 
 })();
