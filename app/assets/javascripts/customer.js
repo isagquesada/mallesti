@@ -33,6 +33,29 @@
   };
  }]);
 
+
+  app.controller('CustomerFormController', ['$http', '$state', function($http, $state){
+    var scope = this;
+    scope.mostrar = false;
+
+    scope.on = function(){
+      scope.mostrar = !scope.mostrar;
+    }
+
+    scope.addCustomer = function(customer){
+    $http.post(
+      "/customers.json/",
+      {customer: scope.newCustomer}
+    )
+    .success(function(data){
+      customer.push(data.customer);
+      scope.newCustomer={name: '', address: '', town: '', city: '', country: '', zip_code: '', cif: '', email: '', phone: ""};
+    })
+  };
+
+  }]);
+
+
  app.controller('CustomerIdController', ['$http', '$state', function($http, $state){
   var scope = this;
   scope.customer = [];
@@ -43,4 +66,9 @@
     })
   }]);
 
+
 })();
+
+
+
+
