@@ -13,18 +13,46 @@
   app.directive('formCustomer', function(){
   return {
     restrict: 'E',
-    templateUrl: 'form-customer.html'
+    templateUrl: 'form-customer.html',
+    scope:{
+      ctrldatos: "="
+    }
   };
 });
 
  app.controller('CustomerController', ['$http', function($http){
   var scope = this;
   scope.customers = [];
+  scope.newCustomer = {};
+  scope.errors = {};
+
+  scope.mostrar = false;
 
   $http.get('/customers.json')
     .success(function(data){
       scope.customers = data.customers;
     })
+
+    scope.on = function(){
+      scope.mostrar = !scope.mostrar;
+    }
+
+  
+    scope.save = function(){
+      
+    $http.post(
+      "/customers.json/",
+      {customer: scope.model}
+    )
+    .success(function(data){
+      scope.customers.push(data.customer);
+      scope.model={};
+      scope.errors = {};
+    })
+    .error(function(data){
+      scope.errors = data.errors;
+    })
+  };
   
   scope.removeCustomer = function (customer){
 
@@ -41,38 +69,15 @@
  }]);
 
 
-  app.controller('CustomerFormController', ['$http', '$state', function($http, $state){
-    var scope = this;
-    scope.mostrar = false;
+ app.controller('CustomerIdController', ['$http', '$state', function($http, $state){
+  var scope = this;
+
+  scope.mostrar = false;
 
     scope.on = function(){
       scope.mostrar = !scope.mostrar;
     }
 
-    scope.newCustomer = {};
-    scope.errors = {};
-
-    scope.addCustomer = function(customer){
-    
-      
-    $http.post(
-      "/customers.json/",
-      {customer: scope.newCustomer}
-    )
-    .success(function(data){
-      customer.push(data.customer);
-      scope.newCustomer={};
-    })
-    .error(function(data){
-      scope.errors = data.errors;
-    })
-  };
-
-  }]);
-
-
- app.controller('CustomerIdController', ['$http', '$state', function($http, $state){
-  var scope = this;
   scope.customer = [];
 
   $http.get("/customers/" + $state.params.id + ".json") //este id es el que ponermos en el state que en la url (customers/:id) 

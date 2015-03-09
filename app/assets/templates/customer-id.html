@@ -1,6 +1,7 @@
 
-
-<seccion ng-controller="CustomerIdController as customeridCtrl">
+<div class="col-md-6">
+  <h2>Cliente</h2>
+  <seccion>
     <div class="panel">
     <ul class="list-group">
       <li class="list-group-item">
@@ -42,6 +43,12 @@
     </ul>
   </div>
 </seccion>
+<button type="button" class="btn btn-default" ng-click="customeridCtrl.on()">Editar</button>
+</div>
+
+<div class="col-md-6" ng-show="customeridCtrl.mostrar">
+<form-customer></form-customer>
+</div>
 
 
 
