@@ -10,6 +10,13 @@
   };
 });
 
+  app.directive('formCustomer', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'form-customer.html'
+  };
+});
+
  app.controller('CustomerController', ['$http', function($http){
   var scope = this;
   scope.customers = [];
@@ -42,14 +49,22 @@
       scope.mostrar = !scope.mostrar;
     }
 
+    scope.newCustomer = {};
+    scope.errors = {};
+
     scope.addCustomer = function(customer){
+    
+      
     $http.post(
       "/customers.json/",
       {customer: scope.newCustomer}
     )
     .success(function(data){
       customer.push(data.customer);
-      scope.newCustomer={name: '', address: '', town: '', city: '', country: '', zip_code: '', cif: '', email: '', phone: ""};
+      scope.newCustomer={};
+    })
+    .error(function(data){
+      scope.errors = data.errors;
     })
   };
 
