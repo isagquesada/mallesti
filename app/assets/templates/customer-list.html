@@ -9,8 +9,9 @@
     </thead>
     <tbody>
       <tr ng-repeat="customer in customerCtrl.customers">
-        <td class="nav nav-pills"><a ui-sref="customer({id: customer.id})">{{customer.name}}</a><td>
+        <td>{{customer.name}}<td>
         <td>{{customer.email}}</td>
+        <td class="nav nav-pills"><a ui-sref="customer({id: customer.id})">Info</a><td>
         <td><a ng-click="customerCtrl.removeCustomer(customer)">Eliminar</a></td>
       </tr>
     </tbody>
@@ -18,50 +19,6 @@
 
   <button type="button" class="btn btn-default" ng-click="customerFormCtrl.on()">Crear Cliente</button>
 
-  <div class="panel row">
-  ...
-  <form name="customerForm" ng-show="customerFormCtrl.mostrar" ng-submit="customerFormCtrl.addCustomer(customerCtrl.customers)" novalidate>
-    <div class="form-group">
-      <label for="customerName">Nombre</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.name"class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="customerName">Dirección</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.address"class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="customerName">Provincia</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.town"class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="customerName">Ciudad</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.city"class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="customerName">País</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.country"class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="customerName">Código Postal</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.zip_code"class="form-control">
-    </div>
-     <div class="form-group">
-      <label for="customerName">CIF</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.cif"class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="customerName">Email</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.email"class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="customerName">Teléfono</label>
-      <input type="text" ng-model="customerFormCtrl.newCustomer.phone"class="form-control">
-    </div>
-    
-    <div class="form-group">
-      <input type="submit" value="Crear" class="btn btn-primary" >
-    </div>
-  </form>
-</div>
+  <form-customer></form-customer>
 
 </div>
