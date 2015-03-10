@@ -15,7 +15,7 @@
     restrict: 'E',
     templateUrl: 'form-customer.html',
     scope:{
-      ctrldatos: "="
+      ctrldatos: "=", cabecera: "=",
     }
   };
 });
@@ -23,7 +23,7 @@
  app.controller('CustomerController', ['$http', function($http){
   var scope = this;
   scope.customers = [];
-  scope.newCustomer = {};
+  scope.save = {};
   scope.errors = {};
 
   scope.mostrar = false;
@@ -71,20 +71,39 @@
 
  app.controller('CustomerIdController', ['$http', '$state', function($http, $state){
   var scope = this;
-
+  scope.customer = {};
   scope.mostrar = false;
+  scope.model = {};
+  scope.errors = {};
 
-    scope.on = function(){
+  scope.on = function(){
       scope.mostrar = !scope.mostrar;
     }
-
-  scope.customer = [];
 
   $http.get("/customers/" + $state.params.id + ".json") //este id es el que ponermos en el state que en la url (customers/:id) 
     .success(function(data){
       scope.customer = data.customer;
+      angular.copy(data.customer, scope.model);
+    });
+
+  scope.save = function(){
+      
+    $http.put(
+      "/customers/" + scope.customer.id + ".json", 
+      {customer: scope.model}
+    )
+   .success(function() {
+      angular.copy(scope.model, scope.customer);
+      scope.mostrar = false;
+      scope.errors = {};
     })
+    .error(function(data){
+      scope.errors = data.errors;
+    })
+  };
+
   }]);
+
 
 
 })();
