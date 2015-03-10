@@ -43,11 +43,12 @@
     </ul>
   </div>
 </seccion>
-<button type="button" class="btn btn-default" ng-click="customeridCtrl.on()">Editar</button>
+<button class="btn btn-info" ui-sref="customers">Atras</buttom>
+<button type="button" class="btn btn-primary" ng-click="customeridCtrl.on()">Editar</button>
 </div>
 
-<div class="col-md-6" ng-show="customeridCtrl.mostrar">
-<form-customer></form-customer>
+<div class="col-md-6">
+<form-customer ctrldatos="customeridCtrl" cabecera="'Editar Cliente'" ng-show="customeridCtrl.mostrar"></form-customer>
 </div>
 
 

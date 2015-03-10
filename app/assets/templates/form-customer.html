@@ -2,7 +2,7 @@
 
   
   <form name="customerForm" ng-submit="ctrldatos.save()">
-      <h2>Editar Cliente</h2>
+      <h2>{{cabecera}}</h2>
     <div class="form-group" ng-class="{ 'has-error' : ctrldatos.errors.name }">
       <label for="customerName">Nombre</label>
       <input type="text" ng-model="ctrldatos.model.name"class="form-control">
