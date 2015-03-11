@@ -22,7 +22,9 @@ gem 'bootstrap-sass'
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
   gem 'rails-assets-angular-ui-router'
+  gem 'rails-assets-angular-permission'
   gem 'angular-rails-templates'
+  gem 'rails-assets-angular-local-storage'
 end
 
 
